@@ -13,7 +13,7 @@ This is the internal IP of the VM where we install jenkins.
       name: java
     become: true
 ```
-In this tasks block, we install java. The module is ```bash yum```. The ```bash become: true``` command allows us to assume a sudo permissions.
+In this tasks block, we install java. The module is ```yum```. The ```become: true``` command allows us to assume a sudo permissions.
 ```bash
   - name: Set-up wget
     yum:
@@ -26,7 +26,7 @@ Same as above, but we install wget.
     shell:
       sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 ```
-In this block, we use the very useful ```bash shell``` module. It allows us to implement lines of code as if we were in the shell.
+In this block, we use the very useful ```shell``` module. It allows us to implement lines of code as if we were in the shell.
 ```bash
   - name: Set-up rpm jenkins
     shell:
