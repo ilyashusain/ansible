@@ -1,0 +1,59 @@
+---
+- hosts: 10.142.0.8
+  tasks:
+  - name: Set-up docker
+    yum:
+      name: docker
+      state: latest
+    become: true
+
+- hosts: 10.142.0.9
+  tasks:
+  - name: Set-up java
+    yum:
+      name: java
+    become: true
+  - name: Set-up wget
+    yum:
+      name: wget
+    become: true
+  - name: Set-up wget jenkins
+    shell:
+      sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  - name: Set-up rpm jenkins
+    shell:
+      sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key      
+  - name: Set-up jenkins
+    shell:
+      sudo yum install -y jenkins
+    become: true
+
+- hosts: 10.142.0.10
+  tasks:
+  - name: Set-up java
+    yum:
+      name: java
+      state: latest
+    become: true
+  - name: Set-up wget
+    yum:
+      name: wget
+    become: true
+  - name: Set-up wget nexus
+    shell:
+      sudo wget -O wget http://download.sonatype.com/nexus/3/latest-unix.tar.gz
+    become: true
+  - name: untar nexus
+    unarchive:
+      src: latest-unix.tar.gz
+      dest: /opt
+    become: true
+
+- hosts: 10.142.0.11
+  tasks:
+  - name: Set-up git
+    yum:
+      name: git
+      state: latest
+    become: true
+...
