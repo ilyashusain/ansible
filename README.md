@@ -2,6 +2,7 @@
 
 Outline of methodology:
 
+```bash
 - hosts: 10.142.0.9
   tasks:
   - name: Set-up java
@@ -22,3 +23,4 @@ Outline of methodology:
     shell:
       sudo yum install -y jenkins
     become: true
+```
