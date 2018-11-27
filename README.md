@@ -13,7 +13,7 @@ This is the internal IP of the VM where we install jenkins.
       name: java
     become: true
 ```
-In this tasks block, we install java. The module is ```yum```. The ```become: true``` command allows us to assume a sudo permissions.
+In this tasks block, we install java. The module is ```yum```. The ```become: true``` command allows us to assume sudo permissions.
 ```bash
   - name: Set-up wget
     yum:
