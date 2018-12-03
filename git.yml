@@ -45,7 +45,7 @@
     become: true
   - name: untar nexus
     unarchive:
-      src: latest-unix.tar.gz
+      src: /home/ihusain1994/latest-unix.tar.gz
       dest: /opt
     become: true
 
